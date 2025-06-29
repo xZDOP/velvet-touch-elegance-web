@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Mail, Phone, MapPin, Instagram, Facebook, Youtube, Linkedin } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Facebook, Youtube, Linkedin, MessageCircle } from 'lucide-react';
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,6 +27,13 @@ const Contact = () => {
     console.log('Newsletter signup:', email);
     setEmail('');
     // Here you would typically send the email to your newsletter service
+  };
+
+  const handleWhatsAppClick = () => {
+    const phoneNumber = '+15551234567'; // Replace with your actual WhatsApp business number
+    const message = encodeURIComponent('Hello! I would like to inquire about your event planning services.');
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
@@ -68,6 +75,19 @@ const Contact = () => {
                     <div>
                       <p className="font-medium text-gray-800">Phone</p>
                       <p className="text-gray-600 font-light">+1 (555) 123-4567</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4">
+                    <button
+                      onClick={handleWhatsAppClick}
+                      className="w-10 h-10 glass-card rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200 cursor-pointer"
+                    >
+                      <MessageCircle size={18} className="text-green-600" />
+                    </button>
+                    <div>
+                      <p className="font-medium text-gray-800">WhatsApp</p>
+                      <p className="text-gray-600 font-light">Click to message us</p>
                     </div>
                   </div>
                   
